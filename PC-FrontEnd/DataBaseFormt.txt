@@ -78,9 +78,10 @@ The Database will have the format described bellow:
     |    |    }
     |    |__{    #Transaçoes Salvas no Seguinte formato.
     |            _id:"1" ou "1.03.12" ou "1.00"   #Each Transaction will have an ID, if it is unique if ID is a unique Number, 
-                                                  #if it is splitted its id will have a dot with the position of the parcel, proceeded by the Number of parcels.
-                                                  #if it is infinite repetition, after the point there will be only .00
+    |                                             #if it is splitted its id will have a dot with the position of the parcel, proceeded by the Number of parcels.
+    |                                             #if it is infinite repetition, after the point there will be only .00
     |            "Type": 0, 1, 2                  #Transaction Type, 0 Transfer, 1 Expense, 2 Revenue, 3 Interest Income. 
+    |            "Value":10.00,
     |            "Account":"AccountName"       
     |            "Category":"CategoryName"
     |            "SubCategory":"SubCategoryName"
@@ -89,6 +90,7 @@ The Database will have the format described bellow:
     |            "PayDay":Date 
     |            "Alert":(Binary)
     |            "PaymentVoucher: Document
+    |            "Coin":"BRL"
     |        }
     |
     |__Accounts    #Coleção com as contas
