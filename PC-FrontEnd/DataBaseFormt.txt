@@ -3,26 +3,9 @@ This document was written in 2 languages:
 O database terá o formato descrito abaixo:
  "#" Usados para explicações.
 
-    DDHM            #Database Create inside  MongoDB.
-    |__ MM/YYYY     #A coleção is create a month.
-    |__ 01/2019     
-    |__ 02/2019     #Example of Collection create.
-    |    |__ {
-    |    |       _id:"DD/MM//YYYY",                                      #All days will have your Balance Save.
-    |    |       DayBalance: DayBalance(Float),                     
-    |    |       DayBalanceAccount:{                                     #All Account will have your DayBalance Save.
-    |    |                            "AccountName":DayBalance(Float)    
-    |    |                          }
-    |    |    }
-    |    |__{    #Example of previous Description.
-    |    |       _id:"01/02/2019",
-    |    |       DayBalance:15000.25,
-    |    |       DayBalanceAccount:{
-    |    |                            "Credit card":-2500,
-    |    |                            "Bank DDHM": 17500.25     
-    |    |                          }
-    |    |    }
-    |    |__{    #Transactions are saved in the following format.
+    DDHM         #Database Criado dentro do MongoDB.
+    |__ YYYY     #Uma coleção é criada por Ano.
+    |    |__{    #Transaçoes Salvas no Seguinte formato.
     |            _id:"1" ou "1.03.12" ou "1.00"   #Each Transaction will have an ID, if it is unique if ID is a unique Number, if it is splitted its id will have a dot with the position of the parcel, proceeded by the Number of parcels. if it is infinite repetition, after the point there will be only .00
     |            "Type": 0, 1, 2                  #Tipo de Transação, 0 Tranferencia, 1 Despesa, 2 Receitas, 3 Receitas de Juros. 
     |            "Account":"AccountName"       
@@ -54,29 +37,13 @@ O database terá o formato descrito abaixo:
                 "Name":"Category"
                 "SubCategoryNames":List(names)
             }
-
+*************************************************************************
+************************************************************************
 The Database will have the format described bellow:
 "#" is used to explain
-    DDHM            #Database Criado dentro do MongoDB.
-    |__ MM/YYYY     #Uma coleção é criada por Mês.
-    |__ 01/2019     
-    |__ 02/2019     #Exemplo de coleção Criada
-    |    |__ {
-    |    |       _id:"DD/MM//YYYY",                                      #Todos os Dias terão seu balanço Salvo
-    |    |       DayBalance: DayBalance(Float),                          #Balanço diario salvo.  
-    |    |       DayBalanceAccount:{                                     #Todas as contas terão seu Valor diario salvo.
-    |    |                            "AccountName":DayBalance(Float)    #Conta e valor diario.
-    |    |                          }
-    |    |    }
-    |    |__{    #Exemplo da descriçao anterior.
-    |    |       _id:"01/02/2019",
-    |    |       DayBalance:15000.25,
-    |    |       DayBalanceAccount:{
-    |    |                            "Cartão de Credito":-2500,
-    |    |                            "Bank DDHM": 17500.25     
-    |    |                          }
-    |    |    }
-    |    |__{    #Transaçoes Salvas no Seguinte formato.
+    DDHM         #Database Create inside  MongoDB.
+    |__ YYYY     #A coleção is create a month.
+    |    |__{    #Transactions are saved in the following format.
     |            _id:"1" ou "1.03.12" ou "1.00"   #Each Transaction will have an ID, if it is unique if ID is a unique Number, 
     |                                             #if it is splitted its id will have a dot with the position of the parcel, proceeded by the Number of parcels.
     |                                             #if it is infinite repetition, after the point there will be only .00
@@ -88,14 +55,15 @@ The Database will have the format described bellow:
     |            "Observations":"Textgoingtouser"
     |            "Consolidated": (Binary)
     |            "PayDay":Date 
+                 "AddDay":Date
     |            "Alert":(Binary)
-    |            "PaymentVoucher: Document
+    |            "PaymentVoucherID": Document
     |            "Coin":"BRL"
     |        }
     |
-    |__Accounts    #Coleção com as contas
+    |__Accounts    
     |    |__{
-    |            "Type":0,1,2...         ##Tipo de contas:   0 - Wallet
+    |            "Type":0,1,2...         ##Type of Accounts: 0 - Wallet
     |                                                       #1 - Bank
     |                                                       #2 - Bank with overdraft
     |                                                       #3 - Credit Card
@@ -106,7 +74,7 @@ The Database will have the format described bellow:
     |            "interestMonth":float 
     |        }
     |
-    |__Category     #Classification Categoriestttt
+    |__Category     #Classification Categories
         |__{
                 "Name":"Category"
                 "SubCategoryNames":List(names)
