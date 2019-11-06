@@ -11,12 +11,6 @@ class DatabaseFunctions:
     def CreateDataBase(self, Language):
         Text=LanguagePacket()
         TextLanguages = Text.DictLanguage()
-        Year = datetime(datetime.today().timetuple()[0]-2,1,1).year
-        for _ in range(0,9):
-            self.Database[str(Year)]
-            SalveDB={"Init":"Init"}
-            self.Database[str(Year)].insert_one(SalveDB)
-            Year = Year+1
         self.Database["Accounts"].insert_one({  "AccountName":TextLanguages[Language]['FirstNameWallet'],
                                                         "Type":0,
                                                         "AccountLimit": 0.0,
@@ -59,5 +53,27 @@ class DatabaseFunctions:
                             "Coin":Coin,
                             "_id": ID
         }
-        self.Database[PayDay[6:]].insert_one(TransationDict)
+        self.Database['Transations'].insert_one(TransationDict)
         self.Database['Accounts'].update_one({'_id': 'IDs'}, {"$set":{'IDs':ID}})
+    def delTransation(self, ID, PayDay):
+        pass
+    def CreateDataFrame(self,InitialDay=0, EndDay=0):
+        if('Transations' in self.Database.list_collection_names()):
+            SheetwithTransation = pd.DataFrame(list(self.Database['Transations'].find()))
+            return SheetwithTransation
+        else:
+            return -1
+    '''    def editTransation(self,**kwargs):
+        NoneorArg = lambda x:(x in kwargs and kwargs.get(x) or None)
+        Type                = kwargs.get('Type')
+        Value               = kwargs.get('Value')
+        Account             = kwargs.get('Account')
+        Category            = NoneorArg('Category')
+        SubCategory         = NoneorArg('SubCategory')
+        Observations        = NoneorArg('Observations')
+        Consolidated        = NoneorArg('Consolidated')
+        PayDay              = kwargs.get('PayDay')
+        FuturePayDay        = NoneorArg('FuturePayDay')
+        Alert               = NoneorArg('Alert')
+        PaymentVoucherPath  = NoneorArg('PaymentVoucherPath')
+        Coin                = NoneorArg('Coin')'''
