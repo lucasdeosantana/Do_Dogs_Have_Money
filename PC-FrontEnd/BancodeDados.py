@@ -22,7 +22,7 @@ class DatabaseFunctions:
         self.Database["Documents"].insert_one({"Init":"Init"})
         for categorys in TextLanguages[Language]["Categorys"]:
              self.Database["Category"].insert_one({"Name":categorys, "SubCategoryNames":TextLanguages[Language]["Categorys"][categorys]})
-    def AddTransation(self,**kwargs):
+    def AddTransaction(self,ID=None,**kwargs):
         NoneorArg = lambda x:(x in kwargs and kwargs.get(x) or None)
         Type                = kwargs.get('Type')
         if(Type == 1):
@@ -41,7 +41,9 @@ class DatabaseFunctions:
         Coin                = NoneorArg('Coin')
         InitialInstallment  = NoneorArg('InitialInstallment')
         EndInstallment      = NoneorArg('EndInstallment')
-        ID = self.Database['Accounts'].find_one({'_id': 'IDs'})['IDs']+1
+        if(ID==None):
+            ID = self.Database['Accounts'].find_one({'_id': 'IDs'})['IDs']+1
+            self.Database['Accounts'].update_one({'_id': 'IDs'}, {"$set":{'IDs':ID}})
         if(Type == 0):
             AccountDestiny = kwargs.get('AccountDestiny')
         else:
@@ -65,9 +67,11 @@ class DatabaseFunctions:
                             "EndInstallment":EndInstallment
         }
         self.Database['Transations'].insert_one(TransationDict)
-        self.Database['Accounts'].update_one({'_id': 'IDs'}, {"$set":{'IDs':ID}})
-    def delTransation(self, ID):
-        pass
+    def delTransaction(self, ID):
+        self.Database['Transations'].delete_one({"_id":ID})
+    def editTransaction(self,ID,**kwargs):
+        delTransaction(ID,**kwargs)
+        AddTransaction(ID,**kwargs)
     def CreateDataFrame(self,InitialDay=0, EndDay=0):
         if('Transations' in self.Database.list_collection_names()):
             SheetwithTransation = pd.DataFrame(list(self.Database['Transations'].find()))
