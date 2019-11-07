@@ -8,3 +8,23 @@ class LanguagePacket:
         UseLanguage=json.loads(PackLang.readline())
         PackLang.close()
         return UseLanguage
+
+class FunctionsGeneral:
+    def __init__(self):
+        pass
+    def DateFormate(self, Date):
+        Day = int(Date[0:2])
+        Month = int(Date[3:5])+1
+        year = int(Date[6:])
+        if(Month>12):
+            Month = 1
+            year+=1
+        if(Day<10):
+            day = '0'+str(Day)
+        else:
+            day = str(Day)
+        if(Month<10):
+            month = '0'+str(Month)
+        else:
+            month = str(Month)
+        return (day+'/'+month+'/'+str(year))
