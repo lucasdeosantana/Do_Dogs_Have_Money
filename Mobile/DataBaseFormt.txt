@@ -1,0 +1,81 @@
+This document was written in 2 languages:
+
+O database terá o formato descrito abaixo:
+ "#" Usados para explicações.
+
+    DDHM         #Database Criado dentro do MongoDB.
+    |__ Transactions    #Uma coleção é criada para Transações.
+    |    |__{    #tTransaçoes Salvas no Seguinte formato.
+    |            _id:"1" ou "1.03.12" ou "1.00"   #Each Transaction will have an ID, if it is unique if ID is a unique Number, if it is splitted its id will have a dot with the position of the parcel, proceeded by the Number of parcels. if it is infinite repetition, after the point there will be only .00
+    |            "Type": 0, 1, 2                  #Tipo de Transação, 0 Tranferencia, 1 Despesa, 2 Receitas, 3 Receitas de Juros. 
+    |            "Account":"AccountName"       
+    |            "Category":"CategoryName"
+    |            "SubCategory":"SubCategoryName"
+    |            "Observations":"Textgoingtouser"
+    |            "Consolidated": (Binary)
+    |            "PayDay":Date 
+    |            "Alert":(Binary)
+    |            "PaymentVoucher: Document
+    |        }
+    |
+    |__Accounts    #Coleção com as contas
+    |    |__{
+                 "AccountName":"Name"
+    |            "Type":0,1,2...         ##Tipo de contas:   0 - Carteira
+    |                                                       #1 - Banco
+    |                                                       #2 - Banco com cheque especial
+    |                                                       #3 - Cartão de Credito
+    |                                                       #4 - Investimentos
+    |            "AccountLimit": Float
+    |            "BalanceAccount": Float
+    |            "PayDay":Date
+    |            "interestMonth":float 
+    |        }
+    |
+    |__Category     #Categorias de Classificação
+        |__{
+                "Name":"Category"
+                "SubCategoryNames":List(names)
+            }
+*************************************************************************
+************************************************************************
+The Database will have the format described bellow:
+"#" is used to explain
+    DDHM         #Database Create inside  MongoDB.
+    |__ Transaction     #A coleção is create for Transaction
+    |    |__{    #Transactions are saved in the following format.
+    |            _id:"1" ou "1.03.12" ou "1.00"   #Each Transaction will have an ID, if it is unique if ID is a unique Number, 
+    |                                             #if it is splitted its id will have a dot with the position of the parcel, proceeded by the Number of parcels.
+    |                                             #if it is infinite repetition, after the point there will be only .00
+    |            "Type": 0, 1, 2                  #Transaction Type, 0 Transfer, 1 Expense, 2 Revenue, 3 Interest Income. 
+    |            "Value":10.00,
+    |            "Account":"AccountName"       
+    |            "Category":"CategoryName"
+    |            "SubCategory":"SubCategoryName"
+    |            "Observations":"Textgoingtouser"
+    |            "Consolidated": (Binary)
+    |            "PayDay":Date 
+                 "AddDay":Date
+    |            "Alert":(Binary)
+    |            "PaymentVoucherID": Document
+    |            "Coin":"BRL"
+    |        }
+    |
+    |__Accounts    
+    |    |__{
+    |            "Type":0,1,2...         ##Type of Accounts: 0 - Wallet
+    |                                                       #1 - Bank
+    |                                                       #2 - Bank with overdraft
+    |                                                       #3 - Credit Card
+    |                                                       #4 - investment
+    |            "AccountLimit": Float
+    |            "BalanceAccount": Float
+    |            "PayDay":Date
+    |            "interestMonth":float 
+    |        }
+    |
+    |__Category     #Classification Categories
+        |__{
+                "Name":"Category"
+                "SubCategoryNames":List(names)
+            }t
