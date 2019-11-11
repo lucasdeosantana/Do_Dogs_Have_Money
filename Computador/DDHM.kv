@@ -1,39 +1,35 @@
+#:set Borders_constructors (0,0,0,1)
+#:set Color_BG (0.8,0.8,0.8,1)
 <InitScreen>:
     canvas.before:
         Color:
-            rgba: (0.933, 0.933, 0.933, 1)
+            rgba: Color_BG
         Rectangle:
             # self here refers to the widget i.e FloatLayout
             pos: self.pos
             size: self.size
     BoxLayout:
-        orientation:'vertical'
-        BoxLayout:
-            size_hint:(.2,.1)
-            canvas.before:
-                Color:
-                    rgba: (0.933, 0.933, 0.933,1)
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
-            BoxLayout:
-                size_hint:(.05,.1)
+        orientation:'vertical'    
+        LayoutConstructor:
+            size_hint_y:0.12
+            LayoutConstructor:
+                size_hint_y:0.05
             AnchorLayout:
                 anchor_x: 'left'
                 Label:
+                    size_hint:(None,None)
                     text: app.LanguageTex['Portuguese']['Welcome']
                     font_size: '25dp'
                     color:0,0,0,1
-                    size_hint:(None,None)
                     size: self.texture_size
         BoxLayout:
             size_hint:(1,.1)            
             canvas.before:
                 Color:
-                    rgba: (0.933, 0.933, 0.933,1)
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
+                    rgba: Borders_constructors
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
             BoxLayout:
                 size_hint:(.05,.1)
             AnchorLayout:
@@ -45,41 +41,43 @@
                     size_hint:(None,None)
                     size: self.texture_size
         BoxLayout:
-            size_hint:(1,.1) 
+            size_hint:(1,0.1) 
             canvas.before:
                 Color:
-                    rgba: (0.933, 0.933, 0.933,1)
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
+                    rgba: Borders_constructors
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
             Label:
                 text: app.LanguageTex['Portuguese']['DBinsert']
                 font_size: '20dp'
                 color:0,0,0,1
         BoxLayout:
-            size_hint:(1,.1)
+            size_hint_y:0.12
             canvas.before:
                 Color:
-                    rgba: (0.933, 0.933, 0.933,1)
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
+                    rgba: Borders_constructors
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
             BoxLayout:
                 size_hint_x:0.05
                 canvas.before:
                     Color:
-                        rgba: (0.933, 0.933, 0.933,1)
-                    Rectangle:
-                        size: self.size
-                        pos: self.pos
+                        rgba: Borders_constructors
+                    Line:
+                        width: 2
+                        rectangle: self.x, self.y, self.width, self.height
             Label:
                 text: app.LanguageTex['Portuguese']['DBHTML']
                 size_hint_x: .30
                 font_size: '20dp'
                 color:0,0,0,1
             TextInput:
+                text:"http://localhost/"
                 multiline:False
                 size_hint_x: .4
+                font_size: '25dp'
             Label:
                 text: app.LanguageTex['Portuguese']['Port']
                 size_hint_x:0.12
@@ -88,21 +86,71 @@
             TextInput:
                 multiline:False
                 size_hint_x: .20
+                font_size: '25dp'
             BoxLayout:
                 size_hint_x:0.05
                 canvas.before:
                     Color:
-                        rgba: (0.933, 0.933, 0.933,1)
-                    Rectangle:
-                        size: self.size
-                        pos: self.pos
+                        rgba: Borders_constructors
+                    Line:
+                        width: 2
+                        rectangle: self.x, self.y, self.width, self.height
+        BoxLayout:
+            size_hint_y:0.12
+            canvas.before:
+                Color:
+                    rgba: Borders_constructors
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
+            LayoutConstructor:
+                size_hint_x:0.1
+            Label:
+                text: 'User'
+                size_hint_x: .07
+                font_size: '20dp'
+                color:0,0,0,1
+            TextInput:
+                size_hint_x: .20
+                font_size: '20dp'
+                color:0,0,0,1
+            LayoutConstructor: 
+                size_hint_x:0.1
+                
+        LayoutConstructor:
+            size_hint_y: 0.12
+            size_hint_x: 1
+            LayoutConstructor:
+                size_hint_x:0.1
+            Label:
+                text: 'Password:'
+                size_hint_x: .07
+                font_size: '20dp'
+                color:0,0,0,1
+            TextInput:
+                size_hint_x: .20
+                font_size: '20dp'
+                color:0,0,0,1
+            LayoutConstructor: 
+                size_hint_x:0.1
         BoxLayout:
             canvas.before:
                 Color:
-                    rgba: (1, 0.5, 0, 1)
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
+                    rgba: Borders_constructors
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
+        LayoutConstructor:
+            size_hint_y:0.2
+           
+        BoxLayout:
+            size_hint_y:0.1
+            canvas.before:
+                Color:
+                    rgba: Borders_constructors
+                Line:
+                    width: 2
+                    rectangle: self.x, self.y, self.width, self.height
                 
 <SettingsScreen>:
     BoxLayout:
@@ -111,3 +159,12 @@
         Button:
             text: 'Back to menu'
             on_press: root.manager.current = 'menu'
+
+<LayoutConstructor@BoxLayout>:
+    size_hint_x:0.05
+    canvas.before:
+        Color:
+            rgba: Borders_constructors
+        Line:
+            width: 2
+            rectangle: self.x, self.y, self.width, self.height
