@@ -13,6 +13,7 @@ class SettingsScreen(Screen):
 class DDHMapp(App):
     Text = LanguagePacket()
     LanguageTex = Text.DictLanguage()
+    Languagetext = 'Portuguese'
     def build(self):
         self.load_kv('DDHM.kv')
         sm = ScreenManager()
