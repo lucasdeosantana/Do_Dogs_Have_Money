@@ -9,6 +9,14 @@ class InitScreen(Screen):
 class SettingsScreen(Screen):
     pass
 
+class LoginPage(Screen):
+    pass
+
+class Home(Screen):
+    pass
+
+class Transactions(Screen):
+    pass
 
 class DDHMapp(App):
     Text = LanguagePacket()
@@ -16,10 +24,12 @@ class DDHMapp(App):
     Languagetext = 'Portuguese'
     def build(self):
         self.load_kv('DDHM.kv')
-        sm = ScreenManager()
-        sm.add_widget(InitScreen(name='menu'))
-        sm.add_widget(SettingsScreen(name='settings'))
-        return sm
+        Screens = ScreenManager()
+        Screens.add_widget(InitScreen(name='DBscreen'))
+        Screens.add_widget(CreateUser(name='UserCreator'))
+        Screens.add_widget(LoginPage(name='LoginPage'))
+        Screens.add_widget(Home(name='Home'))
+        return Screens
 
 
 if __name__ == '__main__':
