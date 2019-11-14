@@ -1,0 +1,124 @@
+<DBscreen>:
+    canvas.before:
+        Color:
+            rgba: Color_BG
+        Rectangle:
+            # self here refers to the widget i.e FloatLayout
+            pos: self.pos
+            size: self.size
+    BoxLayout:
+        orientation:'vertical'    
+        LayoutConstructor:
+            size_hint_y:0.12
+            LayoutConstructor:
+                size_hint_x:0.05
+            AnchorLayout:
+                anchor_x: 'left'
+                Label:
+                    size_hint:(None,None)
+                    text: app.LanguageTex[app.Languagetext]['Welcome']
+                    font_size: '25dp'
+                    color:0,0,0,1
+                    size: self.texture_size
+        LayoutConstructor:
+            size_hint:(1,.1)            
+            LayoutConstructor:
+                size_hint_x:0.1
+            AnchorLayout:
+                anchor_x: 'left'
+                Label:
+                    text: app.LanguageTex[app.Languagetext]['Welcome2']
+                    font_size: '20dp'
+                    color:0,0,0,1
+                    size_hint:(None,None)
+                    size: self.texture_size
+        LayoutConstructor:
+            size_hint_y:0.1
+        LayoutConstructor:
+            size_hint:(1,0.1) 
+            Label:
+                text: app.LanguageTex[app.Languagetext]['DBinsert']
+                font_size: '20dp'
+                color:0,0,0,1
+        LayoutConstructor:
+            size_hint_y:0.05
+        LayoutConstructor:
+            size_hint_y:0.12
+            LayoutConstructor:
+                size_hint_x:0.05
+            Label:
+                text: app.LanguageTex[app.Languagetext]['DBHTML']
+                size_hint_x: .30
+                font_size: '20dp'
+                color:0,0,0,1
+            TextInput:
+                text:"http://localhost/"
+                multiline:False
+                size_hint_x: .4
+                font_size: '18dp'
+            Label:
+                text: app.LanguageTex[app.Languagetext]['Port']
+                size_hint_x:0.12
+                font_size: '20dp'
+                color:0,0,0,1
+            TextInput:
+                multiline:False
+                size_hint_x: .20
+                font_size: '20dp'
+            LayoutConstructor:
+                size_hint_x:0.05
+        LayoutConstructor:
+            size_hint_y:0.1
+        LayoutConstructor:
+            size_hint_y:0.1
+            Label:
+                text: app.LanguageTex[app.Languagetext]['UserPass']
+                size_hint_x:0.12
+                font_size: '20dp'      
+                color:0,0,0,1          
+        LayoutConstructor:
+            size_hint_y:0.12
+            LayoutConstructor:
+                size_hint_x:0.1
+            Label:
+                text: app.LanguageTex[app.Languagetext]['User']
+                size_hint_x: .07
+                font_size: '20dp'
+                color:0,0,0,1
+            TextInput:
+                size_hint_x: .20
+                font_size: '20dp'
+                color:0,0,0,1
+            LayoutConstructor: 
+                size_hint_x:0.1
+        LayoutConstructor:
+            size_hint_y:0.05      
+        LayoutConstructor:
+            size_hint_y: 0.12
+            LayoutConstructor:
+                size_hint_x:0.1
+            Label:
+                text: app.LanguageTex[app.Languagetext]['Password']
+                size_hint_x: .07
+                font_size: '20dp'
+                color:0,0,0,1
+            TextInput:
+                size_hint_x: .20
+                font_size: '20dp'
+                color:0,0,0,1
+            LayoutConstructor: 
+                size_hint_x:0.1
+        LayoutConstructor:
+        LayoutConstructor:
+            size_hint_y:0.2
+            LayoutConstructor:
+                size_hint_x: 0.7
+            LayoutConstructor:
+                size_hint_x: 0.2
+                Button:
+                    text: app.LanguageTex[app.Languagetext]['Next']
+                    on_release: app.next_page(root.NextButton)
+            LayoutConstructor:
+                size_hint_x: 0.1
+        LayoutConstructor:
+            size_hint_y:0.1

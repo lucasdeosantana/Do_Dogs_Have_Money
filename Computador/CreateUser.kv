@@ -1,0 +1,78 @@
+#:include Variables.kv
+<CreateUser>:
+    BoxLayout:
+        orientation: 'vertical'
+        canvas.before:
+            Color:
+                rgba: Color_BG
+            Rectangle:
+                # self here refers to the widget i.e FloatLayout
+                pos: self.pos
+                size: self.size
+        LayoutConstructor:
+            size_hint_y:0.3
+        LayoutConstructor:
+            size_hint_y:0.15
+            Label:
+                text: app.LanguageTex[app.Languagetext]['UserCreateMsg']
+                color: Black
+                font_size: '20dp'
+        LayoutConstructor:
+            size_hint_y:0.1
+        LayoutConstructor:
+            size_hint_y: 0.07
+            LayoutConstructor:
+                size_hint_x:0.2
+            Label:
+                text: app.LanguageTex[app.Languagetext]['WhichUserName'] 
+                color: Black
+            TextInput:
+                multiline:False
+            LayoutConstructor:
+                size_hint_x:0.2
+        LayoutConstructor:
+            size_hint_y:0.05
+        LayoutConstructor:
+            size_hint_y:0.07
+            LayoutConstructor:
+                size_hint_x:0.2
+            Label:
+                text: app.LanguageTex[app.Languagetext]['WhichPassword'] 
+                color: Black
+            TextInput:
+                multiline:False
+                password: True
+            LayoutConstructor:
+                size_hint_x:0.2
+        LayoutConstructor:
+            size_hint_y:0.05
+        LayoutConstructor:
+            size_hint_y:0.07
+            LayoutConstructor:
+                size_hint_x:0.2
+            Label:
+                text:  app.LanguageTex[app.Languagetext]['RepeatPassword'] 
+                color: Black
+            TextInput:
+                multiline:False
+                password: True
+            LayoutConstructor:
+                size_hint_x:0.2
+        LayoutConstructor:
+            size_hint_y:0.2
+        LayoutConstructor:
+            size_hint_y:0.1
+            LayoutConstructor:
+                size_hint_x:0.3
+            Button:
+                text: app.LanguageTex[app.Languagetext]['Previous'] 
+                on_release: app.next_page(root.previousbutton)
+            LayoutConstructor:
+                size_hint_x:0.3
+            Button:
+                text: app.LanguageTex[app.Languagetext]['Next']
+                on_release: app.next_page(root.nextbutton)
+            LayoutConstructor:
+                size_hint_x:0.3
+        LayoutConstructor:
+            size_hint_y:0.07

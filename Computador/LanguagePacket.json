@@ -1,1 +1,28 @@
-{"Portuguese": {"Next":"Proximo","Password":"Senha:","User":"Usuario:","UserPass":"Se necessitar entre com suas credenciais:","DBHTML":"Endereco do Servidor:","Port":"Porta:","Welcome":"Bem vindo!","Welcome2":"Voce esta no Do Dogs Have Money? Seu Controle Financeiro Ideal","FirstNameWallet": "Minha Carteira","DBinsert":"Insira os dados do banco de dados:","Categorys": {"Comida Fora de Casa": ["Caf\u00e9 da Manha", "Almo\u00e7o", "Jantar"], "Carro": ["Combustivel", "Gasolina", "Alcool", "Alto Pe\u00e7as"]}}, "English": {"FirstNameWallet": "My Wallet"}}
+{"Portuguese": {
+    "Next":"Proximo",
+    "Password":"Senha:",
+    "User":"Usuario:",
+    "UserPass":"Se necessitar entre com suas credenciais:",
+    "DBHTML":"Endereco do Servidor:",
+    "Port":"Porta:",
+    "Welcome":"Bem vindo!",
+    "Welcome2":"Voce esta no Do Dogs Have Money? Seu Controle Financeiro Ideal",
+    "FirstNameWallet": "Minha Carteira",
+    "DBinsert":"Insira os dados do banco de dados:",
+    "UserCreateMsg":"Agora Vamos criar seu Usuario Admnistrador",
+    "WhichUserName":"Qual o nome de usuario?",
+    "WhichPassword":"Qual a senha?",
+    "RepeatPassword":"Repita a senha",    
+    "Previous":"Anterior",
+    "Title":"Do Dogs Have Money?",
+    "Login":"Entrar",
+    "Nada":"Em construçao",
+    "Categorys": {
+        "Comida Fora de Casa": ["Caf\u00e9 da Manha", "Almo\u00e7o", "Jantar"],
+        "Carro": ["Combustivel", "Gasolina", "Alcool", "Alto Pe\u00e7as"]
+        }
+    }, 
+    "English": {
+        "FirstNameWallet": "My Wallet"
+    }
+}

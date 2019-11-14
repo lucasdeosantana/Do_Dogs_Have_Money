@@ -4,8 +4,8 @@ class LanguagePacket:
     def __init__(self, Archive="LanguagePacket.json"):
         self.NameLanguagePack = Archive
     def DictLanguage (self):
-        PackLang = open(self.NameLanguagePack, 'r', encoding='cp1252')
-        UseLanguage=json.loads(PackLang.readline())
+        PackLang = open(self.NameLanguagePack, 'r', encoding='UTF-8')
+        UseLanguage=json.loads(PackLang.read())
         PackLang.close()
         return UseLanguage
 

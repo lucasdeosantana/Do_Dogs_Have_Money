@@ -3,12 +3,15 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager, Screen
 
 Constructor_Borders = 1
-class InitScreen(Screen):
-    pass
+class DBscreen(Screen):
+    def NextButton(self):
+        DDHMapp.Screens.current = 'UserCreator'
 
-class SettingsScreen(Screen):
-    pass
-
+class CreateUser(Screen):
+    def nextbutton(self):
+        DDHMapp.Screens.current = 'LoginPage'
+    def previousbutton(self):
+        DDHMapp.Screens.current = 'DBscreen'
 class LoginPage(Screen):
     pass
 
@@ -22,14 +25,16 @@ class DDHMapp(App):
     Text = LanguagePacket()
     LanguageTex = Text.DictLanguage()
     Languagetext = 'Portuguese'
+    Screens = ScreenManager()
     def build(self):
         self.load_kv('DDHM.kv')
-        Screens = ScreenManager()
-        Screens.add_widget(InitScreen(name='DBscreen'))
-        Screens.add_widget(CreateUser(name='UserCreator'))
-        Screens.add_widget(LoginPage(name='LoginPage'))
-        Screens.add_widget(Home(name='Home'))
-        return Screens
+        self.Screens.add_widget(DBscreen(name='DBscreen'))
+        self.Screens.add_widget(CreateUser(name='UserCreator'))
+        self.Screens.add_widget(LoginPage(name='LoginPage'))
+        #Screens.add_widget(Home(name='Home'))
+        return self.Screens
+    def next_page(self, code):
+        code()
 
 
 if __name__ == '__main__':
